@@ -41,5 +41,19 @@ class PolyTreeNode
       end
     nil
   end
+
+  def bfs(target)
+    q = MyQueue.new
+    q.enqueue(self)
+
+    until q.empty?
+      current = q.dequeue
+      return current if current.value == target
+      current.children.each do |child|
+        q.enqueue(child)
+      end
+    end
+    nil
+  end
 end
 
